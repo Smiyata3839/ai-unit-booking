@@ -164,7 +164,7 @@ body {
   <div class="banner">
     <div class="banner-tag">✨ 完全無料</div>
     <h1>AI UNIT 無料相談会</h1>
-    <p>30分 ・ オンライン（Zoom）・ 担当者は自動でご案内</p>
+    <p>30分 ・ オンライン（Google Meet）・ 担当者は自動でご案内</p>
   </div>
 
   <div class="body">
@@ -229,14 +229,14 @@ body {
     <!-- Loading -->
     <div id="stepLoading">
       <div class="spinner"></div>
-      <p>Zoomリンクを作成中です…</p>
+      <p>Google Meetリンクを作成中です…</p>
     </div>
 
     <!-- Done -->
     <div id="stepDone">
       <div class="done-icon">✓</div>
       <h2>予約が完了しました！</h2>
-      <p>ZoomリンクをメールとLINEにてお送りしました。<br>ご確認をお願いします。</p>
+      <p>Google Meetリンクをメールにてお送りしました。<br>ご確認をお願いします。</p>
       <div class="done-detail" id="doneDetail"></div>
     </div>
   </div>
@@ -358,7 +358,7 @@ function goStep3(){
   document.getElementById('confirmBox').innerHTML =
     `🗓 <strong>${fmtDate(selDate)}</strong><br>`+
     `⏰ <strong>${selTime} 〜 ${addMin(selTime,30)}</strong>（30分）<br>`+
-    `💻 ZoomリンクはメールとLINEにてお送りします`;
+    `💻 Google Meetリンクはメールにてお送りします`;
   show('step3'); setStep(3);
 }
 
@@ -419,8 +419,8 @@ async function submitBooking(){
       `📅 日時：<b>${payload.date} ${payload.time}〜${payload.endTime}</b><br>`+
       `👤 お名前：<b>${name}</b><br>`+
       `📧 メール：<b>${email}</b><br>`+
-      `🧑‍💼 担当：<b>${json.hostName || '自動アサイン済'}</b><br>`+
-      `🔗 Zoom：<b><a href="${json.zoomLink||'#'}" style="color:#0066ff">${json.zoomLink ? 'リンクを開く' : 'メールで送付済み'}</a></b>`;
+      `🧑‍💼 担当：<b>AI UNIT無料相談会担当者</b><br>`+
+      `🔗 Google Meet：<b><a href="${json.meetUrl||json.zoomLink||'#'}" style="color:#0066ff">${(json.meetUrl||json.zoomLink) ? 'リンクを開く' : 'メールで送付済み'}</a></b>`;
 
     show('stepDone');
 
@@ -431,7 +431,7 @@ async function submitBooking(){
       `👤 お名前：<b>${name}</b><br>`+
       `📧 メール：<b>${email}</b><br>`+
       `🧑‍💼 担当：<b>GAS設定後に自動アサインされます</b><br>`+
-      `🔗 Zoom：<b>GAS設定後に自動送付されます</b>`;
+      `🔗 Google Meet：<b>GAS設定後に自動送付されます</b>`;
     show('stepDone');
   }
 }
