@@ -282,7 +282,7 @@ function renderCal() {
     if(dow===0) cls+=' sun';
     if(dow===6) cls+=' sat';
     const isPast = dt < todayMid;
-    if(isPast || dow===0){ cls+=' disabled'; }
+    if(isPast || dow===0 || isHoliday(dt)){ cls+=' disabled'; }
     else {
       if(dt.toDateString()===today.toDateString()) cls+=' today';
       if(selDate && dt.toDateString()===selDate.toDateString()) cls+=' selected';
@@ -296,6 +296,22 @@ function renderCal() {
 function pickDate(dt){ selDate=dt; selTime=null; document.getElementById('btn1').disabled=false; renderCal(); }
 function prevMonth(){ curM--; if(curM<0){curM=11;curY--;} renderCal(); }
 function nextMonth(){ curM++; if(curM>11){curM=0;curY++;} renderCal(); }
+
+// ---- 祝日判定 ----
+const HOLIDAYS = new Set([
+  '2026-01-01','2026-01-12','2026-02-11','2026-02-23','2026-03-20',
+  '2026-04-29','2026-05-03','2026-05-04','2026-05-05','2026-05-06',
+  '2026-07-20','2026-08-11','2026-09-21','2026-09-22','2026-09-23',
+  '2026-10-12','2026-11-03','2026-11-23','2026-12-23',
+  '2027-01-01','2027-01-11','2027-02-11','2027-02-23','2027-03-21',
+  '2027-04-29','2027-05-03','2027-05-04','2027-05-05',
+  '2027-07-19','2027-08-11','2027-09-20','2027-09-23',
+  '2027-10-11','2027-11-03','2027-11-23',
+]);
+function isHoliday(dt){
+  const s = `${dt.getFullYear()}-${String(dt.getMonth()+1).padStart(2,'0')}-${String(dt.getDate()).padStart(2,'0')}`;
+  return HOLIDAYS.has(s);
+}
 
 // ---- Helpers ----
 function fmtDate(dt){ return `${dt.getFullYear()}年${dt.getMonth()+1}月${dt.getDate()}日（${WD[dt.getDay()]}）`; }
