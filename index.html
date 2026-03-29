@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI UNIT 無料相談会 予約</title>
+<title>XANA AI製品 無料相談会 予約</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -163,7 +163,7 @@ body {
 <div class="card">
   <div class="banner">
     <div class="banner-tag">✨ 完全無料</div>
-    <h1>AI UNIT 無料相談会</h1>
+    <h1>XANA AI製品 無料相談会</h1>
     <p>30分 ・ オンライン（Google Meet）・ 担当者は自動でご案内</p>
   </div>
 
@@ -435,7 +435,7 @@ async function submitBooking(){
       `📅 日時：<b>${payload.date} ${payload.time}〜${payload.endTime}</b><br>`+
       `👤 お名前：<b>${name}</b><br>`+
       `📧 メール：<b>${email}</b><br>`+
-      `🧑‍💼 担当：<b>AI UNIT無料相談会担当者</b><br>`+
+      `🧑‍💼 担当：<b>XANA AI製品無料相談会担当者</b><br>`+
       `🔗 Google Meet：<b><a href="${json.meetUrl||json.zoomLink||'#'}" style="color:#0066ff">${(json.meetUrl||json.zoomLink) ? 'リンクを開く' : 'メールで送付済み'}</a></b>`;
 
     show('stepDone');
